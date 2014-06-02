@@ -32,6 +32,10 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	
 	@IBAction func openConfiguration(sender: AnyObject)
 	{
+		if !self.screensaver.hasConfigureSheet() {
+			return;
+		}
+		
 		stopAnimation();
 		
 		self.window.beginSheet(self.screensaver.configureSheet(), completionHandler: { (NSModalResponse) -> Void in

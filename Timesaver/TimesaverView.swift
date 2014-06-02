@@ -11,6 +11,8 @@ import ScreenSaver
 
 class TimesaverView: ScreenSaverView
 {
+	var _configurationWindowController: VLNConfigurationWindowController?;
+	
 	init(frame: NSRect, isPreview: Bool)
 	{
 		super.init(frame: frame, isPreview: isPreview);
@@ -39,6 +41,10 @@ class TimesaverView: ScreenSaverView
 		displayIfNeeded();
 	}
 	
+	/**
+	 * Configuration
+	 */
+	
 	override func hasConfigureSheet() -> Bool
 	{
 		return true;
@@ -46,6 +52,18 @@ class TimesaverView: ScreenSaverView
 	
 	override func configureSheet() -> NSWindow!
 	{
-		return nil;
+		return self.configurationWindowController.window;
+	}
+	
+	var configurationWindowController: VLNConfigurationWindowController
+	{
+		get
+		{
+			if self._configurationWindowController == nil {
+				self._configurationWindowController = VLNConfigurationWindowController(window:nil);
+			}
+			
+			return self._configurationWindowController!;
+		}
 	}
 }
