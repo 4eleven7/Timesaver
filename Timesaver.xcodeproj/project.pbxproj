@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42DD7A23193D248E00BD6412 /* TimesaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD7A22193D248E00BD6412 /* TimesaverView.swift */; };
+		42DD7A2D193D24C100BD6412 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD7A2C193D24C100BD6412 /* main.swift */; };
+		42DD7A2F193D24C100BD6412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD7A2E193D24C100BD6412 /* AppDelegate.swift */; };
+		42DD7A31193D24C100BD6412 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DD7A30193D24C100BD6412 /* Images.xcassets */; };
+		42DD7A34193D24C200BD6412 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42DD7A32193D24C200BD6412 /* MainMenu.xib */; };
+		42DD7A47193D25BA00BD6412 /* TimesaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD7A22193D248E00BD6412 /* TimesaverView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		42DD7A14193D246E00BD6412 /* Timesaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Timesaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		42DD7A18193D246E00BD6412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42DD7A22193D248E00BD6412 /* TimesaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesaverView.swift; sourceTree = "<group>"; };
+		42DD7A28193D24C100BD6412 /* TimesaverApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimesaverApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42DD7A2B193D24C100BD6412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42DD7A2C193D24C100BD6412 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		42DD7A2E193D24C100BD6412 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42DD7A30193D24C100BD6412 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		42DD7A33193D24C200BD6412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42DD7A10193D246E00BD6412 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42DD7A25193D24C100BD6412 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		42DD7A0A193D246E00BD6412 = {
+			isa = PBXGroup;
+			children = (
+				42DD7A16193D246E00BD6412 /* Timesaver */,
+				42DD7A29193D24C100BD6412 /* TimesaverApp */,
+				42DD7A15193D246E00BD6412 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		42DD7A15193D246E00BD6412 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42DD7A14193D246E00BD6412 /* Timesaver.saver */,
+				42DD7A28193D24C100BD6412 /* TimesaverApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42DD7A16193D246E00BD6412 /* Timesaver */ = {
+			isa = PBXGroup;
+			children = (
+				42DD7A22193D248E00BD6412 /* TimesaverView.swift */,
+				42DD7A17193D246E00BD6412 /* Supporting Files */,
+			);
+			path = Timesaver;
+			sourceTree = "<group>";
+		};
+		42DD7A17193D246E00BD6412 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				42DD7A18193D246E00BD6412 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42DD7A29193D24C100BD6412 /* TimesaverApp */ = {
+			isa = PBXGroup;
+			children = (
+				42DD7A2E193D24C100BD6412 /* AppDelegate.swift */,
+				42DD7A30193D24C100BD6412 /* Images.xcassets */,
+				42DD7A32193D24C200BD6412 /* MainMenu.xib */,
+				42DD7A2A193D24C100BD6412 /* Supporting Files */,
+			);
+			path = TimesaverApp;
+			sourceTree = "<group>";
+		};
+		42DD7A2A193D24C100BD6412 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				42DD7A2B193D24C100BD6412 /* Info.plist */,
+				42DD7A2C193D24C100BD6412 /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		42DD7A11193D246E00BD6412 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		42DD7A13193D246E00BD6412 /* Timesaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42DD7A1F193D246E00BD6412 /* Build configuration list for PBXNativeTarget "Timesaver" */;
+			buildPhases = (
+				42DD7A0F193D246E00BD6412 /* Sources */,
+				42DD7A10193D246E00BD6412 /* Frameworks */,
+				42DD7A11193D246E00BD6412 /* Headers */,
+				42DD7A12193D246E00BD6412 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Timesaver;
+			productName = Timesaver;
+			productReference = 42DD7A14193D246E00BD6412 /* Timesaver.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		42DD7A27193D24C100BD6412 /* TimesaverApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42DD7A41193D24C200BD6412 /* Build configuration list for PBXNativeTarget "TimesaverApp" */;
+			buildPhases = (
+				42DD7A24193D24C100BD6412 /* Sources */,
+				42DD7A25193D24C100BD6412 /* Frameworks */,
+				42DD7A26193D24C100BD6412 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimesaverApp;
+			productName = TimesaverApp;
+			productReference = 42DD7A28193D24C100BD6412 /* TimesaverApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42DD7A0B193D246E00BD6412 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Daniel Love";
+				TargetAttributes = {
+					42DD7A13193D246E00BD6412 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					42DD7A27193D24C100BD6412 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 42DD7A0E193D246E00BD6412 /* Build configuration list for PBXProject "Timesaver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42DD7A0A193D246E00BD6412;
+			productRefGroup = 42DD7A15193D246E00BD6412 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42DD7A13193D246E00BD6412 /* Timesaver */,
+				42DD7A27193D24C100BD6412 /* TimesaverApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42DD7A12193D246E00BD6412 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42DD7A26193D24C100BD6412 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42DD7A31193D24C100BD6412 /* Images.xcassets in Resources */,
+				42DD7A34193D24C200BD6412 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42DD7A0F193D246E00BD6412 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42DD7A23193D248E00BD6412 /* TimesaverView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42DD7A24193D24C100BD6412 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42DD7A47193D25BA00BD6412 /* TimesaverView.swift in Sources */,
+				42DD7A2F193D24C100BD6412 /* AppDelegate.swift in Sources */,
+				42DD7A2D193D24C100BD6412 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		42DD7A32193D24C200BD6412 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42DD7A33193D24C200BD6412 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		42DD7A1D193D246E00BD6412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		42DD7A1E193D246E00BD6412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		42DD7A20193D246E00BD6412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Timesaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		42DD7A21193D246E00BD6412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Timesaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		42DD7A42193D24C200BD6412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TimesaverApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		42DD7A43193D24C200BD6412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TimesaverApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42DD7A0E193D246E00BD6412 /* Build configuration list for PBXProject "Timesaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42DD7A1D193D246E00BD6412 /* Debug */,
+				42DD7A1E193D246E00BD6412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42DD7A1F193D246E00BD6412 /* Build configuration list for PBXNativeTarget "Timesaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42DD7A20193D246E00BD6412 /* Debug */,
+				42DD7A21193D246E00BD6412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		42DD7A41193D24C200BD6412 /* Build configuration list for PBXNativeTarget "TimesaverApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42DD7A42193D24C200BD6412 /* Debug */,
+				42DD7A43193D24C200BD6412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 42DD7A0B193D246E00BD6412 /* Project object */;
+}
