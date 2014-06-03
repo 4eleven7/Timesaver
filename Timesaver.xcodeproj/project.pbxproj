@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4252318C193D3102008A512D /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4252318B193D3102008A512D /* ConfigurationWindow.xib */; };
-		4252318D193D3102008A512D /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4252318B193D3102008A512D /* ConfigurationWindow.xib */; };
-		4252318F193D3227008A512D /* VLNConfigurationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252318E193D3227008A512D /* VLNConfigurationWindowController.swift */; };
-		42523190193D3227008A512D /* VLNConfigurationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252318E193D3227008A512D /* VLNConfigurationWindowController.swift */; };
+		421FEB10193D3FE4000FFFFB /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421FEB0D193D3FE4000FFFFB /* ConfigurationWindow.xib */; };
+		421FEB11193D3FE4000FFFFB /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421FEB0D193D3FE4000FFFFB /* ConfigurationWindow.xib */; };
+		421FEB12193D3FE4000FFFFB /* VLNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421FEB0E193D3FE4000FFFFB /* VLNConfiguration.swift */; };
+		421FEB13193D3FE4000FFFFB /* VLNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421FEB0E193D3FE4000FFFFB /* VLNConfiguration.swift */; };
+		421FEB14193D3FE4000FFFFB /* VLNConfigurationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421FEB0F193D3FE4000FFFFB /* VLNConfigurationWindowController.swift */; };
+		421FEB15193D3FE4000FFFFB /* VLNConfigurationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421FEB0F193D3FE4000FFFFB /* VLNConfigurationWindowController.swift */; };
 		42DD7A23193D248E00BD6412 /* TimesaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD7A22193D248E00BD6412 /* TimesaverView.swift */; };
 		42DD7A2D193D24C100BD6412 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD7A2C193D24C100BD6412 /* main.swift */; };
 		42DD7A2F193D24C100BD6412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD7A2E193D24C100BD6412 /* AppDelegate.swift */; };
@@ -20,8 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4252318B193D3102008A512D /* ConfigurationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
-		4252318E193D3227008A512D /* VLNConfigurationWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLNConfigurationWindowController.swift; sourceTree = "<group>"; };
+		421FEB0D193D3FE4000FFFFB /* ConfigurationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
+		421FEB0E193D3FE4000FFFFB /* VLNConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLNConfiguration.swift; sourceTree = "<group>"; };
+		421FEB0F193D3FE4000FFFFB /* VLNConfigurationWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLNConfigurationWindowController.swift; sourceTree = "<group>"; };
 		42DD7A14193D246E00BD6412 /* Timesaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Timesaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DD7A18193D246E00BD6412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42DD7A22193D248E00BD6412 /* TimesaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesaverView.swift; sourceTree = "<group>"; };
@@ -51,6 +54,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		421FEB0C193D3FE4000FFFFB /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				421FEB0E193D3FE4000FFFFB /* VLNConfiguration.swift */,
+				421FEB0F193D3FE4000FFFFB /* VLNConfigurationWindowController.swift */,
+				421FEB0D193D3FE4000FFFFB /* ConfigurationWindow.xib */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		42DD7A0A193D246E00BD6412 = {
 			isa = PBXGroup;
 			children = (
@@ -72,9 +85,8 @@
 		42DD7A16193D246E00BD6412 /* Timesaver */ = {
 			isa = PBXGroup;
 			children = (
+				421FEB0C193D3FE4000FFFFB /* Config */,
 				42DD7A22193D248E00BD6412 /* TimesaverView.swift */,
-				4252318E193D3227008A512D /* VLNConfigurationWindowController.swift */,
-				4252318B193D3102008A512D /* ConfigurationWindow.xib */,
 				42DD7A17193D246E00BD6412 /* Supporting Files */,
 			);
 			path = Timesaver;
@@ -197,7 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4252318C193D3102008A512D /* ConfigurationWindow.xib in Resources */,
+				421FEB10193D3FE4000FFFFB /* ConfigurationWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4252318D193D3102008A512D /* ConfigurationWindow.xib in Resources */,
+				421FEB11193D3FE4000FFFFB /* ConfigurationWindow.xib in Resources */,
 				42DD7A31193D24C100BD6412 /* Images.xcassets in Resources */,
 				42DD7A34193D24C200BD6412 /* MainMenu.xib in Resources */,
 			);
@@ -219,7 +231,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				42DD7A23193D248E00BD6412 /* TimesaverView.swift in Sources */,
-				4252318F193D3227008A512D /* VLNConfigurationWindowController.swift in Sources */,
+				421FEB14193D3FE4000FFFFB /* VLNConfigurationWindowController.swift in Sources */,
+				421FEB12193D3FE4000FFFFB /* VLNConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,9 +241,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				42DD7A47193D25BA00BD6412 /* TimesaverView.swift in Sources */,
-				42523190193D3227008A512D /* VLNConfigurationWindowController.swift in Sources */,
 				42DD7A2F193D24C100BD6412 /* AppDelegate.swift in Sources */,
+				421FEB15193D3FE4000FFFFB /* VLNConfigurationWindowController.swift in Sources */,
 				42DD7A2D193D24C100BD6412 /* main.swift in Sources */,
+				421FEB13193D3FE4000FFFFB /* VLNConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

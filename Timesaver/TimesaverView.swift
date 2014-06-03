@@ -11,13 +11,29 @@ import ScreenSaver
 
 class TimesaverView: ScreenSaverView
 {
-	var _configurationWindowController: VLNConfigurationWindowController?;
+	var configurationWindowController: VLNConfigurationWindowController;
+	var configuration: VLNConfiguration;
 	
 	init(frame: NSRect, isPreview: Bool)
 	{
+		self.configuration = VLNConfiguration();
+		self.configurationWindowController = VLNConfigurationWindowController(configuration: self.configuration);
+		
 		super.init(frame: frame, isPreview: isPreview);
 		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "configurationChanged", name: VLNScreenSaverDefaultsChangedNotification, object: nil);
+		
 		self.setAnimationTimeInterval(1/30.0);
+	}
+	
+	deinit
+	{
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: VLNScreenSaverDefaultsChangedNotification, object: nil);
+	}
+	
+	func configurationChanged()
+	{
+		needsDisplay = true;
 	}
 	
 	override func startAnimation()
@@ -32,18 +48,14 @@ class TimesaverView: ScreenSaverView
 	
 	override func drawRect(rect: NSRect)
 	{
-		NSColor.blueColor().setFill();
+		self.configuration.backgroundColor.color().setFill();
 		NSRectFill(rect);
 	}
 	
 	override func animateOneFrame()
 	{
-		displayIfNeeded();
+		needsDisplay = true;
 	}
-	
-	/**
-	 * Configuration
-	 */
 	
 	override func hasConfigureSheet() -> Bool
 	{
@@ -53,17 +65,5 @@ class TimesaverView: ScreenSaverView
 	override func configureSheet() -> NSWindow!
 	{
 		return self.configurationWindowController.window;
-	}
-	
-	var configurationWindowController: VLNConfigurationWindowController
-	{
-		get
-		{
-			if self._configurationWindowController == nil {
-				self._configurationWindowController = VLNConfigurationWindowController(window:nil);
-			}
-			
-			return self._configurationWindowController!;
-		}
 	}
 }
