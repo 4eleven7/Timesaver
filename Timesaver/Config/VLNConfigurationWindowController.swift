@@ -21,17 +21,22 @@ class VLNConfigurationWindowController: NSWindowController
 		super.init(window: nil);
 	}
 	
-	override func awakeFromNib()
-	{
-		self.backgroundPopup.selectItemAtIndex(self.configuration.backgroundColor.toRaw());
-	}
-	
 	override var windowNibName: String!
 	{
 		get
 		{
 			return "ConfigurationWindow";
 		}
+	}
+	
+	override func awakeFromNib()
+	{
+		loadDefaultValues();
+	}
+	
+	func loadDefaultValues()
+	{
+		self.backgroundPopup.selectItemAtIndex(self.configuration.backgroundColor.toRaw());
 	}
 	
 	@IBAction func saveAndClose(button: NSButton)
@@ -43,6 +48,7 @@ class VLNConfigurationWindowController: NSWindowController
 	@IBAction func cancelAndClose(button: NSButton)
 	{
 		self.configuration.revertChanges();
+		loadDefaultValues();
 		self.window.sheetParent.endSheet(self.window, returnCode: NSModalResponseOK);
 	}
 	

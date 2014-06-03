@@ -38,9 +38,10 @@ class AppDelegate: NSObject, NSApplicationDelegate
 		
 		stopAnimation();
 		
-		self.window.beginSheet(self.screensaver.configureSheet(), completionHandler: { (NSModalResponse) -> Void in
+		self.window.beginSheet(self.screensaver.configureSheet(), completionHandler:{
+																						(NSModalResponse) -> Void in
 																							self.startAnimation();
-																					 });
+																					});
 
 	}
 	
