@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	func applicationDidFinishLaunching(notification: NSNotification!)
 	{
 		self.screensaver.frame = self.window.contentView.bounds;
+		self.screensaver.autoresizingMask = NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable;
 		self.window.contentView.addSubview(self.screensaver);
 		
 		self.startAnimation();

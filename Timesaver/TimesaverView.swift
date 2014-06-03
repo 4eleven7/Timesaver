@@ -64,26 +64,44 @@ class TimesaverView: ScreenSaverView
 	override func drawRect(rect: NSRect)
 	{
 		var contextPointer: COpaquePointer = NSGraphicsContext.currentContext().graphicsPort();
-		var context: CGContext = Unmanaged.fromOpaque(contextPointer).takeUnretainedValue()
+		var context: CGContextRef = Unmanaged.fromOpaque(contextPointer).takeUnretainedValue()
 		
 		var backgroundColor = self.configuration.backgroundColor.color();
 		
 		CGContextSetFillColorWithColor(context, backgroundColor.CGColor);
 		CGContextFillRect(context, rect);
 		
-		var time: CGFloat = 12;
+		var clockFrame: CGRect = self.clockSizeInRect(rect);
+		self.drawHours(clockFrame, context:context);
+	}
+	
+	func drawHours(rect:CGRect, context:CGContextRef)
+	{
+		var radius: CGFloat = CGRectGetWidth(rect) / 2;
+		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+		
+		var time:Double = 12;
 		while time > 0
 		{
-			self.drawHandForTime(time, total: 12, context:context);
+			var angle: CGFloat = self.angleForTimeUnit(time, total: 12);
+			
+			var x: CGFloat = center.x + (cos(angle) * radius);
+			var y: CGFloat = center.y + (sin(angle) * radius);
+			
+			var frame: CGRect = CGRectMake(x, y, 10, 10);
+			
+			var hour:NSString = "\(Int(time))";
+			hour.drawAtPoint(frame.origin, withAttributes:[NSForegroundColorAttributeName:NSColor.whiteColor()]);
+			
 			time--;
 		}
 	}
-	
-	func drawHandForTime(time: CGFloat, total: CGFloat, context: CGContext)
+	/*
+	func drawHandForTime(time:CDouble, total:CDouble, context: CGContextRef)
 	{
-		var degreesPerTime: CGFloat = 360 / total;
-		var radians: CGFloat = (degreesPerTime * M_PI) / 180;
-		var angle: CGFloat = -(radians * time - M_PI_2);
+		var degreesPerTime: CDouble = 360 / total;
+		var radians: CDouble = (degreesPerTime * M_PI) / 180;
+		var angle: CDouble = -(radians * time - M_PI_2);
 		
 		var x: CGFloat = cos(angle);
 		var y: CGFloat = sin(angle);
@@ -95,5 +113,32 @@ class TimesaverView: ScreenSaverView
 		
 		CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor);
 		CGContextFillRect(context, frame);
+	}
+	*/
+	
+	/**
+	 * Size and positioning
+	 */
+	func clockSizeInRect(rect:CGRect) -> CGRect
+	{
+		var clockFrame:CGRect = rect;
+		var percentage:CGFloat = 0.3;
+		if self.isPreview() == true {
+			percentage = 0.5;
+		}
+		
+		clockFrame.size.width = CGRectGetWidth(clockFrame) * percentage;
+		clockFrame.size.height = clockFrame.size.width;
+		
+		return SSCenteredRectInRect(clockFrame, rect);
+	}
+	
+	func angleForTimeUnit(time:CDouble, total:CDouble) -> CGFloat
+	{
+		var degreesPerTime: CDouble = 360 / total;
+		var radians: CDouble = (degreesPerTime * M_PI) / 180;
+		var angle: CDouble = -(radians * time - M_PI_2);
+		
+		return angle;
 	}
 }
