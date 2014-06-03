@@ -46,12 +46,6 @@ class TimesaverView: ScreenSaverView
 		super.stopAnimation();
 	}
 	
-	override func drawRect(rect: NSRect)
-	{
-		self.configuration.backgroundColor.color().setFill();
-		NSRectFill(rect);
-	}
-	
 	override func animateOneFrame()
 	{
 		needsDisplay = true;
@@ -65,5 +59,17 @@ class TimesaverView: ScreenSaverView
 	override func configureSheet() -> NSWindow!
 	{
 		return self.configurationWindowController.window;
+	}
+	
+	override func drawRect(rect: NSRect)
+	{
+		var contextPointer: COpaquePointer = NSGraphicsContext.currentContext().graphicsPort();
+		var context: CGContext = Unmanaged.fromOpaque(contextPointer).takeUnretainedValue()
+		
+		var backgroundColor = self.configuration.backgroundColor.color();
+		
+		CGContextSetFillColorWithColor(context, backgroundColor.CGColor);
+		
+		CGContextFillRect(context, rect);
 	}
 }

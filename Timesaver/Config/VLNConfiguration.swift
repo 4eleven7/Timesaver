@@ -15,7 +15,7 @@ var VLNScreenSaverDefaultBackgroundColor: String = "VLNScreenSaverDefaultBackgro
 
 enum VLNBackgroundColor: Int
 {
-	case Black, White, Blue
+	case Black, White
 	func color() -> NSColor
 	{
 		switch self
@@ -26,9 +26,6 @@ enum VLNBackgroundColor: Int
 			case .White:
 				return NSColor.whiteColor();
 			
-			case .Blue:
-				return NSColor.blueColor();
-			
 			default:
 				return NSColor.grayColor();
 		}
@@ -38,6 +35,14 @@ enum VLNBackgroundColor: Int
 class VLNConfiguration: NSObject
 {
 	var defaults: ScreenSaverDefaults;
+	
+	var backgroundColor: VLNBackgroundColor!
+	{
+		didSet
+		{
+			configurationDidChange();
+		}
+	}
 	
 	init()
 	{
@@ -74,13 +79,5 @@ class VLNConfiguration: NSObject
 	func configurationDidChange ()
 	{
 		NSNotificationCenter.defaultCenter().postNotificationName(VLNScreenSaverDefaultsChangedNotification, object: nil);
-	}
-	
-	var backgroundColor: VLNBackgroundColor!
-	{
-		didSet
-		{
-			configurationDidChange();
-		}
 	}
 }

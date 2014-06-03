@@ -23,8 +23,7 @@ class VLNConfigurationWindowController: NSWindowController
 	
 	override var windowNibName: String!
 	{
-		get
-		{
+		get {
 			return "ConfigurationWindow";
 		}
 	}

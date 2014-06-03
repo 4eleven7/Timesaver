@@ -26,7 +26,7 @@
                 <subviews>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pib-f9-O95" userLabel="Background Popup">
                         <rect key="frame" x="141" y="116" width="178" height="26"/>
-                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="q33-tr-TPJ">
+                        <popUpButtonCell key="cell" type="push" title="White" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dMA-dJ-7xB" id="q33-tr-TPJ">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="JPA-31-hg4">
@@ -34,8 +34,7 @@
                                     <menuItem title="Black" id="Oyh-oJ-oSt">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem title="White" id="dMA-dJ-7xB"/>
-                                    <menuItem title="Blue" id="8KV-FY-HwX"/>
+                                    <menuItem title="White" state="on" id="dMA-dJ-7xB"/>
                                 </items>
                             </menu>
                         </popUpButtonCell>
