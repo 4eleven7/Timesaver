@@ -73,6 +73,7 @@ class TimesaverView: ScreenSaverView
 		
 		var clockFrame: CGRect = self.clockSizeInRect(rect);
 		self.drawHours(clockFrame, context:context);
+		self.drawTicks(clockFrame, context:context);
 	}
 	
 	func drawHours(rect:CGRect, context:CGContextRef)
@@ -88,33 +89,38 @@ class TimesaverView: ScreenSaverView
 			var x: CGFloat = center.x + (cos(angle) * radius);
 			var y: CGFloat = center.y + (sin(angle) * radius);
 			
-			var frame: CGRect = CGRectMake(x, y, 10, 10);
-			
 			var hour:NSString = "\(Int(time))";
-			hour.drawAtPoint(frame.origin, withAttributes:[NSForegroundColorAttributeName:NSColor.whiteColor()]);
+			var textAttributes = [NSForegroundColorAttributeName:NSColor.whiteColor()];
+			var textSize:CGSize = hour.sizeWithAttributes(textAttributes);
+			
+			var frame: CGRect = CGRectMake(x-textSize.width/2, y-textSize.height/2, textSize.width, textSize.height);
+			hour.drawInRect(frame, withAttributes: textAttributes);
 			
 			time--;
 		}
 	}
-	/*
-	func drawHandForTime(time:CDouble, total:CDouble, context: CGContextRef)
+	
+	func drawTicks(rect:CGRect, context:CGContextRef)
 	{
-		var degreesPerTime: CDouble = 360 / total;
-		var radians: CDouble = (degreesPerTime * M_PI) / 180;
-		var angle: CDouble = -(radians * time - M_PI_2);
+		var radius: CGFloat = CGRectGetWidth(rect) / 2;
+		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 		
-		var x: CGFloat = cos(angle);
-		var y: CGFloat = sin(angle);
-		
-		var xOffset: CGFloat = 100 + (cos(angle) * 100);
-		var yOffset: CGFloat = 100 + (sin(angle) * 100);
-		
-		var frame: CGRect = CGRectMake(xOffset, yOffset, 10, 10);
-		
-		CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor);
-		CGContextFillRect(context, frame);
+		var time:Double = 60;
+		while time > 0
+		{
+			var angle: CGFloat = self.angleForTimeUnit(time, total: 60);
+			
+			var x: CGFloat = center.x + (cos(angle) * radius);
+			var y: CGFloat = center.y + (sin(angle) * radius);
+			
+			var frame: CGRect = CGRectMake(x, y, 1, 1);
+			
+			CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor);
+			CGContextFillRect(context, frame);
+			
+			time--;
+		}
 	}
-	*/
 	
 	/**
 	 * Size and positioning
