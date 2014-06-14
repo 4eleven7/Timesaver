@@ -82,13 +82,13 @@ class TimesaverView: ScreenSaverView
 		var date: NSDate = NSDate.date();
 		
 		var hours: CGFloat = date.hoursAgo();
-		self.drawClockHand(clockFrame, context:context, size:CGSizeMake(1.0, 20.0), progress:hours * 12, total:12);
+		self.drawClockHand(clockFrame, context:context, size:0.6, progress:hours * 12, total:12);
 		
 		var minutes: CGFloat = date.minutesAgo();
-		self.drawClockHand(clockFrame, context:context, size:CGSizeMake(1.0, 27.0), progress:minutes * 60, total:60);
+		self.drawClockHand(clockFrame, context:context, size:0.9, progress:minutes * 60, total:60);
 		
 		var seconds: CGFloat = date.secondsAgo();
-		self.drawClockHand(clockFrame, context:context, size:CGSizeMake(0.5, 24.0), progress:seconds * 60, total:60);
+		self.drawClockHand(clockFrame, context:context, size:1.0, progress:seconds * 60, total:60);
 	}
 	
 	func drawTicks(rect:CGRect, context:CGContextRef)
@@ -159,13 +159,15 @@ class TimesaverView: ScreenSaverView
 	
 // MARK: Drawing clock hands
 	
-	func drawClockHand(rect:CGRect, context: CGContextRef, size:CGSize, progress:CGFloat, total:CGFloat)
+	func drawClockHand(rect:CGRect, context: CGContextRef, size:CGFloat, progress:CGFloat, total:CGFloat)
 	{
 		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 		
+		var sizeHeight: CGFloat = self.clockHandHeightInRect(rect) * size;
+		
 		var angle: CGFloat = self.angleForTimeUnit(progress, total: total);
-		var x: CGFloat = center.x + (cos(angle) * size.height);
-		var y: CGFloat = center.y + (sin(angle) * size.height);
+		var x: CGFloat = center.x + (cos(angle) * sizeHeight);
+		var y: CGFloat = center.y + (sin(angle) * sizeHeight);
 		var point: CGPoint = CGPointMake(x, y);
 		
 		CGContextSaveGState(context);
@@ -198,6 +200,12 @@ class TimesaverView: ScreenSaverView
 	func clockRadiusInRect(rect:CGRect) -> CGFloat
 	{
 		var percentage:CGFloat = 0.02;
+		return CGRectGetWidth(rect) * percentage;
+	}
+	
+	func clockHandHeightInRect(rect:CGRect) -> CGFloat
+	{
+		var percentage:CGFloat = 0.4;
 		return CGRectGetWidth(rect) * percentage;
 	}
 	
