@@ -61,6 +61,8 @@ class TimesaverView: ScreenSaverView
 		return self.configurationWindowController.window;
 	}
 	
+// MARK: Drawing
+	
 	override func drawRect(rect: NSRect)
 	{
 		var contextPointer: COpaquePointer = NSGraphicsContext.currentContext().graphicsPort();
@@ -75,6 +77,18 @@ class TimesaverView: ScreenSaverView
 		var clockFrame: CGRect = self.clockSizeInRect(rect);
 		self.drawClockFace(clockFrame, context: context);
 		self.drawTicks(clockFrame, context:context);
+		
+		// Clock hands
+		var date: NSDate = NSDate.date();
+		
+		var hours: CGFloat = date.hoursAgo();
+		self.drawClockHand(clockFrame, context:context, size:CGSizeMake(1.0, 20.0), progress:hours * 12, total:12);
+		
+		var minutes: CGFloat = date.minutesAgo();
+		self.drawClockHand(clockFrame, context:context, size:CGSizeMake(1.0, 27.0), progress:minutes * 60, total:60);
+		
+		var seconds: CGFloat = date.secondsAgo();
+		self.drawClockHand(clockFrame, context:context, size:CGSizeMake(0.5, 24.0), progress:seconds * 60, total:60);
 	}
 	
 	func drawTicks(rect:CGRect, context:CGContextRef)
@@ -143,9 +157,30 @@ class TimesaverView: ScreenSaverView
 		CGContextRestoreGState(context);
 	}
 	
-	/**
-	 * Size and positioning
-	 */
+// MARK: Drawing clock hands
+	
+	func drawClockHand(rect:CGRect, context: CGContextRef, size:CGSize, progress:CGFloat, total:CGFloat)
+	{
+		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+		
+		var angle: CGFloat = self.angleForTimeUnit(progress, total: total);
+		var x: CGFloat = center.x + (cos(angle) * size.height);
+		var y: CGFloat = center.y + (sin(angle) * size.height);
+		var point: CGPoint = CGPointMake(x, y);
+		
+		CGContextSaveGState(context);
+		
+		CGContextSetLineWidth(context, self.clockHandWidthInRect(rect));
+		CGContextSetStrokeColorWithColor(context, NSColor.whiteColor().CGColor);
+		
+		CGContextBeginPath(context);
+		CGContextMoveToPoint(context, center.x, center.y);
+		CGContextAddLineToPoint(context, point.x, point.y);
+		CGContextStrokePath(context);
+	}
+	
+// MARK: Relative size and positioning
+	
 	func clockSizeInRect(rect:CGRect) -> CGRect
 	{
 		var clockFrame:CGRect = rect;
@@ -161,6 +196,12 @@ class TimesaverView: ScreenSaverView
 	}
 	
 	func clockRadiusInRect(rect:CGRect) -> CGFloat
+	{
+		var percentage:CGFloat = 0.02;
+		return CGRectGetWidth(rect) * percentage;
+	}
+	
+	func clockHandWidthInRect(rect:CGRect) -> CGFloat
 	{
 		var percentage:CGFloat = 0.02;
 		return CGRectGetWidth(rect) * percentage;
