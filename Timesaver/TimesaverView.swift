@@ -69,17 +69,30 @@ class TimesaverView: ScreenSaverView
 		var backgroundColor = self.configuration.backgroundColor.color();
 		
 		CGContextSetFillColorWithColor(context, backgroundColor.CGColor);
+		CGContextSetAlpha(context, 0.9);
 		CGContextFillRect(context, rect);
 		
 		var clockFrame: CGRect = self.clockSizeInRect(rect);
-		self.drawHours(clockFrame, context:context);
+		self.drawClockFace(clockFrame, context: context);
 		self.drawTicks(clockFrame, context:context);
 	}
 	
-	func drawHours(rect:CGRect, context:CGContextRef)
+	func drawTicks(rect:CGRect, context:CGContextRef)
 	{
-		var radius: CGFloat = CGRectGetWidth(rect) / 2;
+		CGContextSaveGState(context);
+		
+		NSColor.whiteColor().setStroke();
+		CGContextSetLineCap(context, kCGLineCapRound);
+		CGContextSetLineWidth(context, self.tickWidthInRect(rect));
+		CGContextSetStrokeColorWithColor(context, NSColor.blackColor().CGColor);
+		CGContextSetAlpha(context, 0.5);
+		
+		var radius: CGFloat = CGRectGetWidth(rect) / 2 - (self.clockRadiusInRect(rect) * 2);
 		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+		
+		var hourWidth: Double = self.tickSizeInRect(rect);
+		var minuteWidth: Double = self.tickSizeInRect(rect) * 0.5;
+		var width: Double;
 		
 		var time:Double = 12;
 		while time > 0
@@ -89,37 +102,45 @@ class TimesaverView: ScreenSaverView
 			var x: CGFloat = center.x + (cos(angle) * radius);
 			var y: CGFloat = center.y + (sin(angle) * radius);
 			
-			var hour:NSString = "\(Int(time))";
-			var textAttributes = [NSForegroundColorAttributeName:NSColor.whiteColor()];
-			var textSize:CGSize = hour.sizeWithAttributes(textAttributes);
+			var hour = time % 3;
+			var width: Double;
+			if (hour == 0) {
+				width = hourWidth;
+			} else {
+				width = minuteWidth;
+			}
 			
-			var frame: CGRect = CGRectMake(x-textSize.width/2, y-textSize.height/2, textSize.width, textSize.height);
-			hour.drawInRect(frame, withAttributes: textAttributes);
+			var x2: CGFloat = center.x + (cos(angle) * (radius - width));
+			var y2: CGFloat = center.y + (sin(angle) * (radius - width));
+			
+			CGContextBeginPath(context);
+			CGContextMoveToPoint(context, x, y);
+			CGContextAddLineToPoint(context, x2, y2);
+			CGContextStrokePath(context);
 			
 			time--;
 		}
+		
+		CGContextRestoreGState(context);
 	}
 	
-	func drawTicks(rect:CGRect, context:CGContextRef)
+	func drawClockFace(rect:CGRect, context:CGContextRef)
 	{
-		var radius: CGFloat = CGRectGetWidth(rect) / 2;
-		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+		CGContextSaveGState(context);
 		
-		var time:Double = 60;
-		while time > 0
-		{
-			var angle: CGFloat = self.angleForTimeUnit(time, total: 60);
-			
-			var x: CGFloat = center.x + (cos(angle) * radius);
-			var y: CGFloat = center.y + (sin(angle) * radius);
-			
-			var frame: CGRect = CGRectMake(x, y, 1, 1);
-			
-			CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor);
-			CGContextFillRect(context, frame);
-			
-			time--;
-		}
+		var radius = self.clockRadiusInRect(rect);
+		CGContextAddEllipseInRect(context, CGRectInset(rect, radius, radius));
+		CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor);
+		CGContextSetAlpha(context,0.05);
+		CGContextFillPath(context);
+		
+		CGContextAddEllipseInRect(context, rect);
+		CGContextSetLineWidth(context, radius);
+		CGContextSetStrokeColorWithColor(context, NSColor.whiteColor().CGColor);
+		CGContextSetAlpha(context, 0.1);
+		CGContextStrokePath(context);
+		
+		CGContextRestoreGState(context);
 	}
 	
 	/**
@@ -137,6 +158,24 @@ class TimesaverView: ScreenSaverView
 		clockFrame.size.height = clockFrame.size.width;
 		
 		return SSCenteredRectInRect(clockFrame, rect);
+	}
+	
+	func clockRadiusInRect(rect:CGRect) -> CGFloat
+	{
+		var percentage:CGFloat = 0.02;
+		return CGRectGetWidth(rect) * percentage;
+	}
+	
+	func tickSizeInRect(rect:CGRect) -> CGFloat
+	{
+		var percentage:CGFloat = 0.1;
+		return CGRectGetWidth(rect) * percentage;
+	}
+	
+	func tickWidthInRect(rect:CGRect) -> CGFloat
+	{
+		var percentage:CGFloat = 0.02;
+		return CGRectGetWidth(rect) * percentage;
 	}
 	
 	func angleForTimeUnit(time:CDouble, total:CDouble) -> CGFloat
