@@ -10,12 +10,12 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate
 {
-	@IBOutlet var window: NSWindow;
+	@IBOutlet var window: NSWindow!;
 	
 	var screensaver: TimesaverView;
 	var animationTimer: NSTimer?;
 	
-	init()
+	override init()
 	{
 		self.screensaver = TimesaverView(frame: NSZeroRect, isPreview: false);
 		
@@ -48,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	
 	func startAnimation ()
 	{
-		if self.animationTimer? {
+		if (self.animationTimer != nil) {
 			return;
 		}
 		

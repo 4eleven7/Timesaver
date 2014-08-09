@@ -44,7 +44,7 @@ class VLNConfiguration: NSObject
 		}
 	}
 	
-	init()
+	override init()
 	{
 		self.defaults = ScreenSaverDefaults.defaultsForModuleWithName(VLNScreenSaverDefaultsModuleName) as ScreenSaverDefaults;
 		

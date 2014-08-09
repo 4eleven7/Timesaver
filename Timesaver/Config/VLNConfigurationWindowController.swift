@@ -10,9 +10,16 @@ import Cocoa
 
 class VLNConfigurationWindowController: NSWindowController
 {
-	@IBOutlet var backgroundPopup: NSPopUpButton;
+	@IBOutlet var backgroundPopup: NSPopUpButton!;
 	
 	var configuration: VLNConfiguration;
+	
+	required init(coder: NSCoder!)
+	{
+		self.configuration = VLNConfiguration();
+		
+		super.init(coder: coder);
+	}
 	
 	init(configuration: VLNConfiguration)
 	{

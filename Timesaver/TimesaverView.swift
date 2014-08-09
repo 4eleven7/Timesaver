@@ -14,7 +14,15 @@ class TimesaverView: ScreenSaverView
 	var configurationWindowController: VLNConfigurationWindowController;
 	var configuration: VLNConfiguration;
 	
-	init(frame: NSRect, isPreview: Bool)
+	required init(coder: NSCoder)
+	{
+		self.configuration = VLNConfiguration();
+		self.configurationWindowController = VLNConfigurationWindowController(configuration: self.configuration);
+		
+		super.init(coder: coder);
+	}
+	
+	override init(frame: NSRect, isPreview: Bool)
 	{
 		self.configuration = VLNConfiguration();
 		self.configurationWindowController = VLNConfigurationWindowController(configuration: self.configuration);
@@ -65,8 +73,7 @@ class TimesaverView: ScreenSaverView
 	
 	override func drawRect(rect: NSRect)
 	{
-		var contextPointer: COpaquePointer = NSGraphicsContext.currentContext().graphicsPort();
-		var context: CGContextRef = Unmanaged.fromOpaque(contextPointer).takeUnretainedValue()
+		var context: CGContextRef = NSGraphicsContext.currentContext().CGContext;
 		
 		var backgroundColor = self.configuration.backgroundColor.color();
 		
@@ -104,11 +111,10 @@ class TimesaverView: ScreenSaverView
 		var radius: CGFloat = CGRectGetWidth(rect) / 2 - (self.clockRadiusInRect(rect) * 2);
 		var center: CGPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 		
-		var hourWidth: Double = self.tickSizeInRect(rect);
-		var minuteWidth: Double = self.tickSizeInRect(rect) * 0.5;
-		var width: Double;
+		var hourWidth = self.tickSizeInRect(rect);
+		var minuteWidth = self.tickSizeInRect(rect) * 0.5;
 		
-		var time:Double = 12;
+		var time: Double = 12;
 		while time > 0
 		{
 			var angle: CGFloat = self.angleForTimeUnit(time, total: 12);
@@ -117,7 +123,7 @@ class TimesaverView: ScreenSaverView
 			var y: CGFloat = center.y + (sin(angle) * radius);
 			
 			var hour = time % 3;
-			var width: Double;
+			var width: CGFloat;
 			if (hour == 0) {
 				width = hourWidth;
 			} else {
@@ -165,7 +171,7 @@ class TimesaverView: ScreenSaverView
 		
 		var sizeHeight: CGFloat = self.clockHandHeightInRect(rect) * size;
 		
-		var angle: CGFloat = self.angleForTimeUnit(progress, total: total);
+		var angle: CGFloat = self.angleForTimeUnit(CDouble(progress), total: CDouble(total));
 		var x: CGFloat = center.x + (cos(angle) * sizeHeight);
 		var y: CGFloat = center.y + (sin(angle) * sizeHeight);
 		var point: CGPoint = CGPointMake(x, y);
@@ -233,6 +239,6 @@ class TimesaverView: ScreenSaverView
 		var radians: CDouble = (degreesPerTime * M_PI) / 180;
 		var angle: CDouble = -(radians * time - M_PI_2);
 		
-		return angle;
+		return CGFloat(angle);
 	}
 }

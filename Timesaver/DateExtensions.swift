@@ -10,21 +10,21 @@ import Cocoa
 
 extension NSDate
 {
-	func secondsAgo() -> Double
+	func secondsAgo() -> CGFloat
 	{
 		let comps: NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.SecondCalendarUnit, fromDate: self);
-		return Double(comps.second) / 60;
+		return CGFloat(comps.second) / 60;
 	}
 	
-	func minutesAgo() -> Double
+	func minutesAgo() -> CGFloat
 	{
 		let comps: NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.MinuteCalendarUnit, fromDate: self);
-		return Double(comps.minute) / 60.0 + self.secondsAgo() / 60.0;
+		return CGFloat(comps.minute) / 60.0 + self.secondsAgo() / 60.0;
 	}
 	
-	func hoursAgo() -> Double
+	func hoursAgo() -> CGFloat
 	{
 		let comps: NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.HourCalendarUnit, fromDate: self);
-		return Double(comps.hour) / 12.0 + (Double((self.minutesAgo() / 60.0) * (60.0 / 12.0)));
+		return CGFloat(comps.hour) / 12.0 + (CGFloat((self.minutesAgo() / 60.0) * (60.0 / 12.0)));
 	}
 }
