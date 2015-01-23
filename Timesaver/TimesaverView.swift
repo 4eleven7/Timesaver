@@ -14,7 +14,7 @@ class TimesaverView: ScreenSaverView
 	var configurationWindowController: VLNConfigurationWindowController;
 	var configuration: VLNConfiguration;
 	
-	required init(coder: NSCoder)
+	required init!(coder: NSCoder)
 	{
 		self.configuration = VLNConfiguration();
 		self.configurationWindowController = VLNConfigurationWindowController(configuration: self.configuration);
@@ -73,7 +73,7 @@ class TimesaverView: ScreenSaverView
 	
 	override func drawRect(rect: NSRect)
 	{
-		var context: CGContextRef = NSGraphicsContext.currentContext().CGContext;
+		var context: CGContextRef = NSGraphicsContext.currentContext()!.CGContext;
 		
 		var backgroundColor = self.configuration.backgroundColor.color();
 		
@@ -86,7 +86,7 @@ class TimesaverView: ScreenSaverView
 		self.drawTicks(clockFrame, context:context);
 		
 		// Clock hands
-		var date: NSDate = NSDate.date();
+		var date: NSDate = NSDate();
 		
 		var hours: CGFloat = date.hoursAgo();
 		self.drawClockHand(clockFrame, context:context, size:0.6, progress:hours * 12, total:12);

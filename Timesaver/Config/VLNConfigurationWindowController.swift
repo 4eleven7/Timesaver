@@ -14,9 +14,9 @@ class VLNConfigurationWindowController: NSWindowController
 	
 	var configuration: VLNConfiguration;
 	
-	required init(coder: NSCoder!)
-	{
-		self.configuration = VLNConfiguration();
+    required init!(coder: NSCoder)
+    {
+        self.configuration = VLNConfiguration();
 		
 		super.init(coder: coder);
 	}
@@ -42,24 +42,25 @@ class VLNConfigurationWindowController: NSWindowController
 	
 	func loadDefaultValues()
 	{
-		self.backgroundPopup.selectItemAtIndex(self.configuration.backgroundColor.toRaw());
+		self.backgroundPopup.selectItemAtIndex(self.configuration.backgroundColor.rawValue);
 	}
 	
 	@IBAction func saveAndClose(button: NSButton)
 	{
 		self.configuration.saveChanges();
-		self.window.sheetParent.endSheet(self.window, returnCode: NSModalResponseOK);
+        
+		self.window?.sheetParent?.endSheet(self.window!, returnCode: NSModalResponseOK);
 	}
 	
 	@IBAction func cancelAndClose(button: NSButton)
 	{
 		self.configuration.revertChanges();
 		loadDefaultValues();
-		self.window.sheetParent.endSheet(self.window, returnCode: NSModalResponseOK);
+		self.window?.sheetParent?.endSheet(self.window!, returnCode: NSModalResponseOK);
 	}
 	
 	@IBAction func backgroundPopUpChanged(popup: NSPopUpButton)
 	{
-		self.configuration.backgroundColor = VLNBackgroundColor.fromRaw(popup.indexOfSelectedItem);
+        self.configuration.backgroundColor = VLNBackgroundColor.init(rawValue:popup.indexOfSelectedItem);
 	}
 }

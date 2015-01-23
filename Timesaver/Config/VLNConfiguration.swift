@@ -63,14 +63,14 @@ class VLNConfiguration: NSObject
 	
 	func revertChanges()
 	{
-		self.backgroundColor = VLNBackgroundColor.fromRaw(self.defaults.integerForKey(VLNScreenSaverDefaultBackgroundColor));
+		self.backgroundColor = VLNBackgroundColor(rawValue: self.defaults.integerForKey(VLNScreenSaverDefaultBackgroundColor));
 		
 		configurationDidChange();
 	}
 	
 	func saveChanges()
 	{
-		self.defaults.setInteger(self.backgroundColor.toRaw(), forKey: VLNScreenSaverDefaultBackgroundColor);
+		self.defaults.setInteger(self.backgroundColor.rawValue, forKey: VLNScreenSaverDefaultBackgroundColor);
 		self.defaults.synchronize();
 		
 		configurationDidChange();
