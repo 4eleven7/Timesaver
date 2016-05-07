@@ -46,7 +46,7 @@ class VLNConfiguration: NSObject
 	
 	override init()
 	{
-		self.defaults = ScreenSaverDefaults.defaultsForModuleWithName(VLNScreenSaverDefaultsModuleName) as ScreenSaverDefaults;
+        self.defaults = ScreenSaverDefaults(forModuleWithName: VLNScreenSaverDefaultsModuleName)! as ScreenSaverDefaults;
 		
 		super.init();
 		

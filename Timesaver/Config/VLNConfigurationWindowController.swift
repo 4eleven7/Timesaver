@@ -61,6 +61,6 @@ class VLNConfigurationWindowController: NSWindowController
 	
 	@IBAction func backgroundPopUpChanged(popup: NSPopUpButton)
 	{
-        self.configuration.backgroundColor = VLNBackgroundColor.init(rawValue:popup.indexOfSelectedItem);
+        self.configuration.backgroundColor = VLNBackgroundColor(rawValue:popup.indexOfSelectedItem);
 	}
 }
